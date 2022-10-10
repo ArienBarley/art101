@@ -1,0 +1,31 @@
+
+/*stylesheet for shape art making experiment, shapes.html*/
+
+
+.polygone {
+  height: 100vh;
+  background-color: #336699;
+  clip-path: polygon(0 20%, 100% 0,100% 80%,0 100%);
+  position: relative;
+}
+.in-polygone {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}
+
+
+
+p{
+  color: black;
+}
+
+
+p.special {
+  color: red;
+}
+
+
+p.special {
+  color: green
+}

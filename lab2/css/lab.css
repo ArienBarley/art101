@@ -1,0 +1,42 @@
+h1 {
+  color: #6cd4ce;
+  font-size: 200%;
+}
+
+p {
+  text-indent: 20px;
+  font-family: sans-serif;
+}
+
+#content {
+  background-color: #9e2323;
+  width: 1000px;
+  min-height: 300px;
+  padding: 10px;
+  margin: 10px;
+  border: dotted 1px black;
+  font-size: 20px;
+}
+
+#arien-content {
+  background-color: green;
+  margin:  10px;
+  border: solid 3px #336699;
+  border-radius: 30px;
+}
+
+#red-dance {
+  border-radius: 30px;
+}
+
+.polygone {
+  height: 100vh;
+  background-color: #336699;
+  clip-path: polygon(0 50%, 100% 0,100% 50%,0 100%);
+  position: relative;
+}
+.in-polygone {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}

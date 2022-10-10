@@ -1,0 +1,48 @@
+
+
+
+
+#content {
+  background-color: #00ddff;
+  margin:  10px;
+  border: solid 3px #336699;
+  border-radius: 30px;
+  text-align: justify;
+
+}
+
+#content.p{
+  margin: 10px;
+}
+
+
+.trapesium {
+  clip-path: polygon(30% 20%, 70% 20%,  100% 100%,  0 100%);
+  width = 300px;
+  margin:  10px;
+  shape-outside: polygon(30% 20%, 70% 20%,  100% 100%,  0 100%);
+  display: inline-block;
+
+}
+
+.polygone {
+  height: 100vh;
+  background-color: #336699;
+  clip-path: polygon(0 20%, 100% 0,100% 80%,0 100%);
+  position: relative;
+}
+.in-polygone {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}
+
+p.caption {
+  text-align: center;
+}
+
+#tao {
+  text-align: center;
+  margin: 20px;
+  font-size: 1px
+}
