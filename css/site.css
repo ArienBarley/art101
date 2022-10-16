@@ -1,7 +1,8 @@
 
-
-body {
-background-color: dcf4ff;
+/*general*/
+div.page{
+  background-color: #dcf4ff;
+  border: solid 1px;
 }
 
 #content {
@@ -10,6 +11,18 @@ background-color: dcf4ff;
 }
 
 /*sections*/
+/*js output*/
+div.js-output{
+  font-family: 'Courier New', monospace;
+  background-color: #bfbfbf;
+  width: 50%;
+}
+/*task based*/
+.task div{
+  width: 90%
+  border: solid 3px #000000;
+  align-self: center;
+}
 p.caption {
   text-align: left;
   font-size: 13px;
@@ -24,13 +37,8 @@ img.screenshots {
   align-self: center;
 }
 
-.task {
-  width: 90%
-  border: solid 3px #000000;
-  align-self: center;
 
-}
-
+/*blue content headers*/
 .blue-content {
   background-color: #00ddff;
   margin:  10px;
@@ -49,8 +57,6 @@ img.screenshots {
 }
 
 /*shapes*/
-
-
 .trapesium {
   clip-path: polygon(30% 20%, 70% 20%,  100% 100%,  0 100%);
   width = 300px;
