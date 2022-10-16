@@ -16,9 +16,10 @@ div.js-output{
   font-family: 'Courier New', monospace;
   background-color: #bfbfbf;
   width: 50%;
+  border: solid 1px #000000;
 }
 /*task based*/
-.task div{
+div.task {
   width: 90%
   border: solid 3px #000000;
   align-self: center;
