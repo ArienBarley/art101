@@ -1,30 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Lab X - Subject/Topic</title>
+	<title>Lab 4 - Pseudocoding and Problem-solving</title>
 	<link rel="stylesheet" type="text/css" href="../css/site.css">
 </head>
 <body>
-	<div>
-		<p>
-			nope.
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			sorry...
-		</p>
+	<div class = "page">
+		<div id = "content">
+			<div class = "blue-content">
+				<h3> Lab 4 - Pseudocoding and Problem-solving </h3>
+				<p>Practice thinking of things in a programatic/algorithmic way as practice for designing scripts.</p>
+			</div>
+			<div class="task">
+				<h4> Challenge </h4>
+				<p>The challenge was to use psuedocoding simple tasks to get used to thinking progromaticcally.</p>
+			</div>
+			<div class="task">
+				<h4> Probems </h4>
+				<p>In the tree climbing example it was challenging to maintain a consistent level of detail and not get lost in smaller and smaller subtasks. Having programmed for a long time I am fairly used to psuedocoding.</p>
+			</div>
+			<div class="task">
+				<h4> Results </h4>
+				<p>This assigment is late.</p>
+			</div>
+			<div class = "task">
+				<h4> Task 1 </h4>
+				<p>Psuedocode an everyday task.</p>
+				<div class = "js-output">
+					<p>
+						<b>climb_a_tree():</b><br>
+						1. Route = None<br>
+						2. while Rout is None:<br>
+						3. ----Tree = find_tree()<br>
+						4. ----Route = find_rout(Tree)<br>
+						5. for Step in Rout:<br>
+						6. ----test next branch in Step<br>
+						7. ----execute Step <br>
+						8. ----delete Step<br>
+						9. ----add reassess_rout() to Rout<br>
+						<br>
+						<br>
+					  <b>find_tree():</b><br>
+						1. while True:<br>
+						1. ----Walk through a forest and look at a thing<br>
+						2. ----Thing = thing you looked at <br>
+						3. ----if thing is a tree then:<br>
+						4. --------return Thing<br>
+						<br>
+						<br>
+						<b>find_rout(Tree):</b><br>
+						1. Rout = list[]<br>
+						2. look at lowest branches<br>
+						3. if lowest branches can be reached then:<br>
+						4. ----Route[1] = 'Pull yourself up to lowest branches'<br>
+						4	 ----return Route<br>
+						5. else if trunk can be shimmied up:<br>
+						6. ----Route[1] = 'Shimmy to lowest branches'<br>
+						7. ----return Route<br>
+						8. else:<br>
+						9. ----return None<br>
+						<br>
+						<br>
+						<b>reassess_rout():</b><br>
+						1. Next = a slightly higher  bit of the tree<br>
+						2. Steps = list[]<br>
+						2. While Next is visible:<br>
+						3. ----if a branch in Next can be reached or shimmied to:<br>
+						4. --------add 'grab or shimmy to '+ Next to Steps<br>
+						5. ----else if an unseen higher bit of the tree:<br>
+						6. --------Next = a different higher part of the tree<br>
+						7. ----else:<br>
+						8. --------add 'enjoy the view', 'climb down' to Steps<br>
+						10.--------break while<br>
+						11.return Steps<br>
+					</p>
+
+				</div>
+				<p class = "caption">Psuedocode for climbing a tree.</p>
+
+			</div>
+
+			<div class = "task">
+				<h4> Task 2 </h4>
+				<p>Psuedocode a computer task</p>
+				<div class = "js-output">
+					<pre><code>
+// Loading ascii animation<br>
+// little function to print a spinning line<br>
+// just as an example of psuedocode<br>
+// Author Arien Barley<br>
+// 17/10/2022<br>
+<br>
+// animation = ['|', '/', '—', '\']<br>
+// loop while loading is true:<br>
+//     for charecter in animation:<br>
+//         print charecter<br>
+//         clear output<br>
+				</pre></code>
+				</div>
+				<p class = "caption">Psuedocode for generating a spining ascii line.</p>
+
+			</div>
+		</div>
 	</div>
 </body>
 </html>
