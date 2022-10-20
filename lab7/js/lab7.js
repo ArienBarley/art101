@@ -17,8 +17,15 @@ function sortUserName() {
 
     //turn it back into a string
     nameSorted = nameArraySorted.join('');
-
+    console.log(nameArraySorted);
     return nameSorted;
 }//end
-
-sortUserName();
+/*
+//do function
+document.writeln("running <br>");
+fixedName = sortUserName();
+//output
+window.confirm("Fixed it:" + fixedName);
+document.writeln("Fixed it:", fixedName, "<br>");
+document.writeln("ran<br>")
+*/
