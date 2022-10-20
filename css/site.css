@@ -18,26 +18,33 @@ div.js-output{
   width: 50%;
   border: solid 1px #000000;
 }
+
 /*task based*/
 div.task {
   width: 90%;
   align-self: center;
   border-top: solid 0.1px #000000;
 }
+
+/*for image captions within the task divs*/
 p.caption {
   text-align: left;
   font-size: 13px;
   margin-left: 50px;
 }
+
 p.note {
   font-size: 20px;
 }
-
+/*for screenshots within task divs*/
 img.screenshots {
   width: 30%;
   align-self: center;
 }
-
+/*for image at the top left*/
+img.header {
+  width: 50%;
+}
 
 /*blue content headers*/
 .blue-content {
@@ -46,7 +53,8 @@ img.screenshots {
   border: solid 3px #336699;
   border-radius: 30px;
   text-align: justify;
-  width: 80%;
+  width: 50%;
+  float: left;
 }
 
 .blue-content p{
@@ -55,6 +63,21 @@ img.screenshots {
 
 .blue-content h3{
   text-align: center;
+}
+
+/* to put two divs next to oneanother:*/
+#wrapper {
+    width: 100%;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+/*left hand div*/
+#left {
+  width: 50%;
+  float: hidden;
+}
+/* right hand div*/
+#right {
+    overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
 /*shapes*/
