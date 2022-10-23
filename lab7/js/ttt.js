@@ -5,6 +5,7 @@ License: Public Domain
 */
 
 var osAndXs = {
+    //game of noughts and crosses
     //initialisation
     board: [[-1,-1,-1],
             [-1,-1,-1],
@@ -59,28 +60,46 @@ var osAndXs = {
                 return "X";
                 break;
             default:
-                document.write("Something fucked up.")
+                osAndXs.update_gameboard("Something fucked up.");
         }
     },// end num to char
 
+    turn_to_player: function(){
+        if (osAndXs.turn % 2 == 0){
+            player = 'O';
+        }else{
+            player = 'X';
+        }
+        return player;
+    },//end turn to player
+    reset: function(){
+        osAndXs.board = [[-1,-1,-1],
+                [-1,-1,-1],
+                [-1,-1,-1],];
+        osAndXs.turn = 0;
+        osAndXs.update_gameboard(osAndXs.print_board());
+    },
     print_board: function(){
-        //prints the board of the
-        //tickTackToe game to the document
+        //generates a HTML freindly string of the board
+        //of the tickTackToe game to be printed to the document
         //step through rows
-        document.write("<br>Turn: ", osAndXs.turn, "<br>");
-        document.write("  |a|b|c| <br>");
+        var boardString = '';
+        boardString += "<br>Turn: " + (osAndXs.turn).toString() + "<br>";
+        boardString += "  |a|b|c| <br>";
         for (let i = 0; i<3; i++){
-            document.write("—————————<br>");
+            boardString += "—————————<br>";
             //step through columns
-            document.write((i+1).toString()+":");
+            boardString += (i+1).toString()+":";
             for (let j = 0; j<3; j++){
-                document.write("|");
+                boardString += "|";
                 //write the chatecter corresponding to the number
-                document.write(osAndXs.num_to_char(osAndXs.board[i][j]));
+                boardString += osAndXs.num_to_char(osAndXs.board[i][j]);
             }//end col stepper
-            document.write("|<br>")
+            boardString += "|<br>"
         }//end row stepper
-        document.write("—————————<br>");
+        boardString += "—————————<br>";
+        boardString += osAndXs.turn_to_player() +", take your turn.";
+        return boardString;
     },//end print board
 
 
@@ -108,20 +127,27 @@ var osAndXs = {
         //and 1 if there is a complte row of 1s and 0 similarly
         //step through arrays
         for (let i=0; i<n;i++){
+
             if (arrays[i].includes(-1)){
+                //not a winning line if the it contains an empty
                 continue;
             }else if (arrays[i].includes(0)){
                 if (arrays[i].includes(1)){
+                    //not a winning line if it contains both a o and an x
                     continue;
                 }else{
+                    //if line contains only Os O has won
                     winner = 0;
                 }
             }else{
+                //if line does not include blanks or Os then it is all Xs
+                //so X has won
                 winner = 1;
             }
         }//.end for
         return winner;
     },//end check three arrays
+
     check_for_winner: function(){
         //checks if there is a complete row, column or diagonal of 1s or 0s
         //returns the number that makes up the winning row or col
@@ -130,8 +156,9 @@ var osAndXs = {
         //check rows
         var winner = osAndXs.check_arrays(osAndXs.board, 3,-1);
         //rows have been checked
+
         //check columns
-        //rotate it
+        //rotate the board and pass it to check_arrays
         var rotated = [];
         for (let j = 0; j<3; j++){
             rotated.push([osAndXs.board[0][j],
@@ -140,6 +167,7 @@ var osAndXs = {
                     ]);
         }
         winner = osAndXs.check_arrays(rotated,3,winner);
+        
         //check diagonals
         winner = osAndXs.check_arrays([[osAndXs.board[0][0], osAndXs.board[1][1], osAndXs.board[2][2]],
                                         [osAndXs.board[0][2],osAndXs.board[1,1],osAndXs.board[2][0]]],
@@ -175,69 +203,118 @@ var osAndXs = {
 
     take_turn: function(){
 
-        if (osAndXs.turn % 2 == 0){
-            player = 'O';
-        }else{
-            player = 'X';
-        }
+        player = osAndXs.turn_to_player();
 
+        //take input of players move
         var move = window.prompt(player +
             ", choose a square, for example 'a1' or 'b3' or 'c2' etc : ");
 
-        console.log("move = ", move);
-        //turn move string to array
+        //turn move string to array of chars
         move = move.split('');
         move = [move[0],move[1]];
 
-        console.log(move)
+        //check move is valid
         moveStatus = osAndXs.check_move(move);
-        console.log("moveStatus=",moveStatus)
         //loops until player makes a valid choice
         while (moveStatus != "Valid"){
             move = window.prompt(moveStatus+" "+player+", Please try again: " );
+
             //turn move string to array of chars
             move = move.split('');
             move = [move[0],move[1]];
 
+            //check move is valid
             moveStatus = osAndXs.check_move(move);
         }//end while
 
+        //update game
         move = osAndXs.input_to_coord(move);
         osAndXs.board[move[0]][move[1]] = osAndXs.turn%2;
         osAndXs.turn++;
     },//end take turn
-    game_loop: function(){
-        //loops until the game is complete
-        while (osAndXs.winner == -1){
-            //print board
-            osAndXs.print_board();
-            //take a turn
-            osAndXs.take_turn();
-            console.log("winner = ",osAndXs.winner);
-            //check if there is a winner
-            osAndXs.check_for_winner();
-            console.log("winner = ",osAndXs.winner);
 
-        }//end while
+    update_gameboard: function(text){
+        //function to easily writte text to the div where the game is played
+        document.getElementById("gameboard").innerHTML = "<pre>" +
+                        text + "</pre>";
+    },
 
-        osAndXs.print_board();
+    next_turn: function(){
 
-        //output the winner
+        //take a turn
+        osAndXs.take_turn();
+
+        //check if there is a winner
+        osAndXs.check_for_winner();
+
         switch (osAndXs.winner) {
             case 10:
-                document.write("<br>no-one won :((<br>");
+                osAndXs.update_gameboard("<br>no-one won :((<br>");
                 break;
             case 0:
-                document.write("<br>Well Done O!! You win :)<br>");
+                osAndXs.update_gameboard("<br>Well Done O!! You win :)<br>");
                 break;
             case 1:
-                document.write("<br>Well Done X!! You win :)<br>");
+                osAndXs.update_gameboard("<br>Well Done X!! You win :)<br>");
                 break;
             default:
-                document.write("ut oh im confusned");
+                console.log("no winner yet...")
+                osAndXs.update_gameboard(osAndXs.print_board())
         }//end switch
-
-
-    },//end game_loop
+    },//end next turn
 }//end tickTackToe
-osAndXs.game_loop();
+
+
+//buttons for the game to be played on the page
+
+//to start the game
+let resetButton = document.getElementById("reset");
+
+resetButton.addEventListener('click', event => {
+    osAndXs.reset();
+});
+
+//to take the next turn
+let nextTurn = document.getElementById("next-turn-button");
+console.log(nextTurn);
+nextTurn.addEventListener('click', event => {
+    osAndXs.next_turn();
+});
+
+
+/* code dump
+
+game_loop: function(){
+    //loops until the game is complete
+    while (osAndXs.winner == -1){
+        //print board
+        osAndXs.print_board();
+        //take a turn
+        osAndXs.take_turn();
+        console.log("winner = ",osAndXs.winner);
+        //check if there is a winner
+        osAndXs.check_for_winner();
+        console.log("winner = ",osAndXs.winner);
+
+    }//end while
+
+    osAndXs.print_board();
+
+    //output the winner
+    switch (osAndXs.winner) {
+        case 10:
+            osAndXs.update_gameboard("<br>no-one won :((<br>");
+            break;
+        case 0:
+            osAndXs.update_gameboard("<br>Well Done O!! You win :)<br>");
+            break;
+        case 1:
+            osAndXs.update_gameboard("<br>Well Done X!! You win :)<br>");
+            break;
+        default:
+            osAndXs.update_gameboard("ut oh im confusned");
+    }//end switch
+
+
+},//end game_loop
+*/
