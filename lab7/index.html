@@ -12,33 +12,60 @@
 				<div class = "blue-content" id = "left">
 					<h3>Lab 7 - Functions</h3>
 					<p><u>Learning to use JavaScript Functions</u></p>
-					<p>some kinda reflection</p>
+					<p class = 'note'>
+						Create a JavaScript program which takes a user's name as
+						input and outputs its constituant characters in .sort()
+						order, also impliment a shuffling algorithm and apply
+						it to the name.
+				   	</p>
 				</div>
 				<div id = "right">
-					<img class = "header" src = "img/functions.png">
+					<img class = "header" src = "img/functions.jpg">
 				</div>
 			</div>
 
             <div class = "task">
-    		<h4> Challenge </h4>
-            <p></p>
-            </div>
-            <div class = "task">
-    		<h4> Problems </h4>
-            <p></p>
+	    		<h4> Problems </h4>
+	            <p class = 'note'>
+				   I got very destracted making a noughts and crosses game
+ 				   instead of sorting characters in someone's name,
+ 				   this used up a lot of time I don't have but I learned a
+ 				   lot in the process. <br>
+ 				   I ran into problems that the page wouldnt load properly
+ 				   while the game loop was running and that using
+ 				   document.write() after the page had loaded overwrote the
+ 				   whole page, so I had to directly write to a div.
+ 				   Also I found that if the script was referenced inside
+ 				   the html it wasnt able to find the button objects, but
+ 				   it could when placed outside of the body tags.
+ 				   I would have liked to add a MiniMax algorithm to play
+ 				   against but that would probably take too long...<br>
+ 				   Probably...<br>
+				   <br>
+				   I also had some probems setting up the user input as a form
+				   for the name intut as I was unfamiliar with the way form data
+				   is stored, but w3schools sorted me out.<br>
+				   For the shuffle algorithm I got some help from stack overflow
+				   to save time and energy.<br>
+				   I  could have had the JavaScript output a div styled in css
+				   but I need to work on other classes NOW!<br>
+				</p>
             </div>
             <div class = "task">
         	  <h4> Results </h4>
         	  <img class = "screenshots" src = "img/javascript.png">
         	  <p class = "caption">JavaScript source code</p>
+			  <form id = "helloForm">
+			    Enter your name so I can fix it ;)<br>
+				<input type="text" value="John Smith">
+		  	  </form>
+			  <button id = "shuffle">Shuffle</button>
+			  <button id = "sort">Sort</button>
         	  <h4>Script Output</h4>
-              <div class = js-output>
 
+              <div id = "name-sort-output" class = js-output>
+				  <pre>Press a button. The output will appear here.</pre>
               </div>
-        	  <div class = "js-output">
-        	    <script type="text/javascript" src="js/lab7.js"></script>
-        	  </div>
-        	  <p class = "caption">The Script Works✓</p>
             </div>
 
             <div class = "task">
@@ -58,8 +85,7 @@
     —————————
                   </pre>
         	  </div>
-
-        	  <p class = "caption">The Script Works✓</p>
+			  <a href="js/ttt.js" target="_blank">View Source</a>
             </div>
 		</div>
 	</div>

@@ -4,8 +4,7 @@ Created: 20 October 2022
 License: Public Domain
 */
 
-function sortUserName() {
-    var userName = window.prompt("Hi please tell me your name so I can fix it ;)");
+function fixName(name) {
     console.log("userName = ", userName);
     //split string to an array of characters
     var nameArray = userName.split('');
@@ -20,6 +19,22 @@ function sortUserName() {
     console.log(nameArraySorted);
     return nameSorted;
 }//end
+
+
+
+// to run the program
+let fixName = document.getElementById("reset");
+
+fixName.addEventListener('click', event => {
+    //get userName
+    var name = document.getElementById("username");
+    console.log(name)
+    //sort it
+    nameSorted = sfixName(name, method = 'sort');
+    //write it
+    document.getElementById("name-sort-output").innerHTML = "<pre>Wrong:" +
+                            name + "\n Fixed:"+nameSorted+"</pre>";
+});
 /*
 //do function
 document.writeln("running <br>");

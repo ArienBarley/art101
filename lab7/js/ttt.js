@@ -7,9 +7,11 @@ License: Public Domain
 var osAndXs = {
     //game of noughts and crosses
     //initialisation
+
     board: [[-1,-1,-1],
             [-1,-1,-1],
             [-1,-1,-1],],
+
     turn: 0,
     winner: -1,
     //functions
@@ -98,7 +100,6 @@ var osAndXs = {
             boardString += "|<br>"
         }//end row stepper
         boardString += "—————————<br>";
-        boardString += osAndXs.turn_to_player() +", take your turn.";
         return boardString;
     },//end print board
 
@@ -126,19 +127,25 @@ var osAndXs = {
         //returns -1 if there is no complete row of 1s or 0s
         //and 1 if there is a complte row of 1s and 0 similarly
         //step through arrays
+        console.log("arrays passed to check arrays= ",arrays);
         for (let i=0; i<n;i++){
 
             if (arrays[i].includes(-1)){
                 //not a winning line if the it contains an empty
                 continue;
             }else if (arrays[i].includes(0)){
+
                 if (arrays[i].includes(1)){
                     //not a winning line if it contains both a o and an x
+                    console.log(arrays[i]);
+                    console.log(winner);
                     continue;
                 }else{
                     //if line contains only Os O has won
                     winner = 0;
-                }
+                    console.log("only 0s?:",arrays[i]);
+                    console.log(winner);
+                };
             }else{
                 //if line does not include blanks or Os then it is all Xs
                 //so X has won
@@ -167,14 +174,17 @@ var osAndXs = {
                     ]);
         }
         winner = osAndXs.check_arrays(rotated,3,winner);
-        
+
         //check diagonals
-        winner = osAndXs.check_arrays([[osAndXs.board[0][0], osAndXs.board[1][1], osAndXs.board[2][2]],
-                                        [osAndXs.board[0][2],osAndXs.board[1,1],osAndXs.board[2][0]]],
-                                        2,winner);
+        winner = osAndXs.check_arrays([ [ osAndXs.board[0][0], osAndXs.board[1][1], osAndXs.board[2][2] ],
+                                        [osAndXs.board[0][2], osAndXs.board[1][1] ,osAndXs.board[2][0]]
+                                        ], 2, winner);
+
+
         if ((winner == -1) && (osAndXs.check_board_full())){
              winner = 10;
-        }
+        };
+
         osAndXs.winner = winner;
     },//end check for winner
 
@@ -186,11 +196,9 @@ var osAndXs = {
         cols = ['a','b','c'];
         //check user input
         if (cols.includes(move[0]) && rows.includes(move[1])) {
-            //check if square is free
             //converts move to [row,col] form
             coords = osAndXs.input_to_coord(move);
-            console.log(coords);
-            console.log(osAndXs.board[coords[0] ][ coords[1]]);
+            //check if square is free
             if (osAndXs.board[ coords[0] ][ coords[1] ] == -1){
                 return "Valid";
             }else{
@@ -198,13 +206,12 @@ var osAndXs = {
             }
         }else{
             return "Input Error.";
-        }
+        };
     },//end check_move
 
     take_turn: function(){
 
-        player = osAndXs.turn_to_player();
-
+        player = osAndXs.turn_to_player();;
         //take input of players move
         var move = window.prompt(player +
             ", choose a square, for example 'a1' or 'b3' or 'c2' etc : ");
@@ -249,17 +256,18 @@ var osAndXs = {
 
         switch (osAndXs.winner) {
             case 10:
-                osAndXs.update_gameboard("<br>no-one won :((<br>");
+                osAndXs.update_gameboard(osAndXs.print_board() +"<br>no-one won :((<br>");
                 break;
             case 0:
-                osAndXs.update_gameboard("<br>Well Done O!! You win :)<br>");
+                osAndXs.update_gameboard(osAndXs.print_board() +"<br>Well Done O!! You win :)<br>");
                 break;
             case 1:
-                osAndXs.update_gameboard("<br>Well Done X!! You win :)<br>");
+                osAndXs.update_gameboard(osAndXs.print_board() +"<br>Well Done X!! You win :)<br>");
                 break;
             default:
                 console.log("no winner yet...")
-                osAndXs.update_gameboard(osAndXs.print_board())
+                osAndXs.update_gameboard(osAndXs.print_board() + "<br>" +
+                 osAndXs.turn_to_player() +", take your turn.")
         }//end switch
     },//end next turn
 }//end tickTackToe
@@ -282,6 +290,84 @@ nextTurn.addEventListener('click', event => {
 });
 
 
+
+//name sorting stuff for lab7
+//functions
+function fixUserName(name, method) {
+    console.log("name = ", name);
+    //split string to an array of characters
+    var nameArray = name.split('');
+    console.log("nameArray = ", nameArray);
+
+    switch (method) {
+        case 'sort':
+            // sort nameArray
+            var fixedNameArray = nameArray.sort();
+            break;
+        case 'shuffle':
+            // thanks to ashleedawg on stack overflow for this algorithm
+            //shuffle nameArray
+            //step from the end of nameArray choosing a random
+            //to the beggining, choosing a random element from
+            //the positions before i to go into position i
+            var fixedNameArray = nameArray
+            console.log('fixed = ',fixedNameArray);
+            for(var i= fixedNameArray.length -1;i>0;i--){
+                //pick a random element from the array before
+                //index i
+                var j = Math.floor(Math.random() * (i+1));
+                //swap elements i and j in nameArray
+                var temp = fixedNameArray[i];
+                fixedNameArray[i] = fixedNameArray[j];
+                fixedNameArray[j] = temp;
+            }//end for
+
+            break;
+        default:
+            console.log("something must have gond wrong...");
+    }
+
+    //turn it back into a string
+    var nameFixed = fixedNameArray.join('');
+    console.log('fixed = ',fixedNameArray);
+    return nameFixed;
+}//end fixusername
+
+// to run the program
+let sortButton = document.getElementById("sort");
+
+sortButton.addEventListener('click', event => {
+    //get userName
+    var rawform = document.getElementById("helloForm");
+    console.log("rawform = ",rawform);
+    name = rawform[0].value;
+    //fix it
+    nameSorted = fixUserName(name,'sort');
+    //write it
+    document.getElementById("name-sort-output").innerHTML = "<pre>Wrong: " +
+                            name+"\nFixed: "+nameSorted+"</pre>";
+});
+
+let shuffleButton = document.getElementById('shuffle');
+
+shuffleButton.addEventListener('click', event => {
+    //get userName
+    var rawform = document.getElementById("helloForm");
+    console.log("rawform = ",rawform);
+    var name = rawform[0].value;
+
+    //fix it
+    var nameShuffled = fixUserName(name,'shuffle');
+
+    //write it
+    document.getElementById("name-sort-output").innerHTML = "<pre>Wrong: " +
+                            name+"\nFixed: "+nameShuffled+"</pre>";
+});
+
+
+breakerArray = [[0,1,0],
+                [1,1,0],
+                [0,0,1]];
 /* code dump
 
 game_loop: function(){
