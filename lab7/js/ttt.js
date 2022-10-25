@@ -290,6 +290,11 @@ nextTurn.addEventListener('click', event => {
 });
 
 
+/*
+Author: Arien Barley
+Created: 20 October 2022
+License: Public Domain
+*/
 
 //name sorting stuff for lab7
 //functions
