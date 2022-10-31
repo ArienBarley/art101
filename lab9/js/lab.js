@@ -80,23 +80,39 @@ function sigmoid(x){
     return 1/(1+Math.exp(-x));
 };//end sigmoid
 
-//main ting
+function setNumericStyles(el, n){
+    //inplace function to set numeric
+    //styles of an html element to the passed number, n
+    console.log('setting styles')
+    el.style.width = 'n%';
+    el.style.height = 'n%';
+    el.innerHTML = n.toString();
+    el.style.backgroundColour = '#'+ n.toString(16);
+    return el;
+};
+
+
 function main(){
-    //take user input from form
+    //get user input
     var rawform = document.getElementById("input-number");
     n = rawform[0].value;
 
-    //generate an array of numbers from 1 to n
-    var arr = range(n);
+    //get parent div
+    var targetEl = document.getElementById('output-1');
+    //create child div
+    var newEl1 = document.createElement('div');
+    newEl1.style.width = '50';
+    newEl1.style.height = '50';
+    newEl1.innerHTML = n.toString();
+    newEl1.style.backgroundColour = 'black';
+    //set numeric styles
+    //newEl1 = setNumericStyles(newEl1,n);
 
-    //generate corresponding array for functions
-    isprimeArr = arr.map(isPrime);
-    sigmoidArr = arr.map(sigmoid);
+    //place the created El inside the output div
+    targetEl.appendChild(newEl1);
+    //var newEl2 = document.createElement('div');
 
-    //zip 'em and print 'em
-    //console.log(zip(arr,isprimeArr));
-    writeToDiv("<br> Is it prime?:<br>"+arrToString(zip(arr,isprimeArr))+"<br> Sigmoid Array:<br>"+arrToString(zip(arr,sigmoidArr))
-    ,"output-1");
+
 };
 
 //for running code from the page
@@ -107,17 +123,3 @@ mainButton.addEventListener('click', event => {
 });
 
 //the end
-
-
-
-
-
-
-
-//dump
-
-//to create a global scope function ANONYMOUS
-//like llambda in python;
-var sigmoid = function(x,y){
-    return 1/(1+Math.exp(-x));
-};

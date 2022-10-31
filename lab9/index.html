@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 9 - JavaScript for the Web</title>
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<script type="text/javascript" src="js/lab.js" defer></script>
+</head>
+<body>
+	<div class = "page">
+		<div id = "content">
+			<div id = "wrapper">
+
+				<div class = "blue-content" id = "left">
+					<h3>Lab 9 - JavaScript for the Web</h3>
+					<p><u>Using JavaScript to edit HTML document</u></p>
+					<p></p>
+
+				</div>
+				<div id = "right">
+					<img class = "header" src = "img/callbacks.png">
+				</div>
+			</div>
+			<div class = 'task'>
+				<h4>Lecture notes</h4>
+
+				<p> DOM --> Document Object model, Generated from the html </p>
+				<p>- Tree structtire with the document as root which is why document.write() does what it does </p>
+				<p>- Also why css works by traversing the tree, selecting elements and or their sub-elements</p>
+				<p><u>How to manipulate the DOM with javascript</u></p>
+				<p>The first step is to find the element document.document element</p>
+				<p>
+					Useful ways to retrieve elements:<br>
+					document.getElementsByTagName("p")<br>
+					document.getElementsByClassName("some-class-name")<br>
+					document.getElementById('element name')
+				</p>
+				<p>It is useful to add something like El to the end of your variable names to keep track of what they are.</p>
+				<br>
+				<br>
+				<p>elements can be created via the dom not just through text:<br>
+				1. get the element <br>
+				ex : var targetEl = document.getElementById(...)<br>
+				2. create new element<br>
+				ex : var newEl = document.createElement("button")<br>
+				.....newEl.innerHTML = "press me"<br>
+				.....newEl.style.backgroundColour = 'red'<br>
+				3. insert the created element to the parent<br>
+				ex :targetEl.appendChild(newEl)<br>
+				</p>
+				<br>
+				<br>
+				<p></p>
+			</div>
+
+			<div class = "task">
+				<h4> Try the JavaScript </h4>
+				<form id = "input-number">
+				    Gimme a number<br>
+				    <input type="number" value='20'>
+				</form>
+				<h4>Script Output</h4>
+				<div id = 'output-1' class = "js-output">
+					<p>click 'Run' to create a div whos numeric arributes are set to your number </p>
+				</div>
+				<button id = "main-button">Run</button>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
