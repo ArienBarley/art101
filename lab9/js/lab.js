@@ -1,6 +1,6 @@
 /*
 Author: Arien Barley
-Created: 25 October
+Created: 30th October
 License: Public Domain
 */
 
@@ -62,56 +62,71 @@ function zip(...args){
 
 //end utilities
 
-function isPrime(n){
-    //step through possible factors
-    for (i = 2; i<Math.ceil(Math.sqrt(n))+1; i++){
-        if (n % i == 0) {
-            //if a factor is found return false
-            return false;
-        }else{
-            continue;
-        };
-    };
-    //if the loop finishes without finding a factor
-    return true;
-};//end isPrime
+/*
+Author: Arien Barley
+Created: 30th October
+License: Public Domain
+*/
 
-function sigmoid(x){
-    return 1/(1+Math.exp(-x));
-};//end sigmoid
+// fractal div recursive function
+function add2Divs(targetEl,stopper = 1000){
+    //adds 'children' to the passed div until stopper
+    //is below 1
+    if (stopper > 1){
+        var newEl1 = document.createElement('div');
+        var newEl2 = document.createElement('div');
+        //set new element styles
+        setStylesForRecurr(newEl1);
+        setStylesForRecurr(newEl2);
+
+        //add make els children of div
+        targetEl.appendChild(newEl1);
+        targetEl.appendChild(newEl2, float = 'right');
+        //recurr
+        add2Divs(newEl2,stopper/2);
+        add2Divs(newEl1,stopper/2);
+    };
+
+};//end add2Divs
+
+
+function setStylesForRecurr(el, float = 'left'){
+    var  randomcolour = '#' + Math.floor(Math.random()*16777215).toString(16);
+    el.style.width = '40%';
+    el.style.height = '40%';
+    el.style.backgroundColor = randomcolour;
+    el.style.border = randomcolour + ' solid 0.1px';
+    el.style.float = float;
+
+};
 
 function setNumericStyles(el, n){
-    //inplace function to set numeric
-    //styles of an html element to the passed number, n
-    console.log('setting styles')
-    el.style.width = 'n%';
-    el.style.height = 'n%';
+    //inplace function to set some numeric
+    //styles of an html element to the
+    //passed number, n
+    el.style.position = 'relative';
+    el.style.width = n.toString()+'%';
+    el.style.height = n.toString()+'%';
     el.innerHTML = n.toString();
-    el.style.backgroundColour = '#'+ n.toString(16);
-    return el;
+    el.style.backgroundColor = '#'+n.toString(16);
 };
 
 
 function main(){
     //get user input
     var rawform = document.getElementById("input-number");
-    n = rawform[0].value;
+    var n = rawform[0].value;
 
     //get parent div
     var targetEl = document.getElementById('output-1');
     //create child div
     var newEl1 = document.createElement('div');
-    newEl1.style.width = '50';
-    newEl1.style.height = '50';
-    newEl1.innerHTML = n.toString();
-    newEl1.style.backgroundColour = 'black';
-    //set numeric styles
-    //newEl1 = setNumericStyles(newEl1,n);
-
+    //set the styles to n where i could be bothered to write
+    //ways for that to happen
+    setNumericStyles(newEl1,n);
     //place the created El inside the output div
     targetEl.appendChild(newEl1);
-    //var newEl2 = document.createElement('div');
-
+    //v
 
 };
 
@@ -123,3 +138,18 @@ mainButton.addEventListener('click', event => {
 });
 
 //the end
+
+//recurrrrrrrrrr
+function recurr(){
+
+    //get parent div
+    var targetEl = document.getElementById('output-2');
+    add2Divs(targetEl);
+};
+
+//for running code from the page
+let breakit = document.getElementById("breakit");
+
+breakit.addEventListener('click', event => {
+    recurr();
+});
