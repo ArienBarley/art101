@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 10 - JavaScript Events and Forms</title>
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<script type="text/javascript" src="js/lab.js" defer></script>
+</head>
+<body>
+	<div class = "page">
+		<div id = "content">
+			<div id = "wrapper">
+
+				<div class = "blue-content" id = "left">
+					<h3>Lab 10 - JavaScript Events and Forms</h3>
+					<p><u>Learning about JavaScript Events</u></p>
+					<p></p>
+
+				</div>
+				<div id = "right">
+					<img class = "header" src = "img/callbacks.png">
+				</div>
+			</div>
+			<div class = "task">
+				<h4>Challenge</h4>
+				<p>
+					Use buttons and input fields to make websites more
+					interactive. It was interesting looking into different
+					kind of built in inputs and using them
+					to customise the glitchy div creating function.
+				</p>
+			</div>
+			<div class = "task">
+				<h4>Problems</h4>
+				<p>
+					I implimented lab 7 this way (without looking at this lab)
+					and have been using forms and buttons in most labs since so
+					this went smoothly.
+				</p>
+			</div>
+
+			<div class = "task">
+				<h4>Results</h4>
+				<p> Enter your name <p>
+				<input id = 'username' type = 'text' value='Some Letters'>
+				<div id = 'output-1' class = "js-output">
+					<p>
+						Click sort to sort your name and shuffle to shuffle
+						your name
+					</p>
+				</div>
+				<button id = "sort">Sort</button>
+				<button id = "shuffle">Shuffle</button>
+			</div>
+			<div class = "task">
+				<p>
+					Customisable version of the recurr function from last week
+				</p>
+
+				<p>Border width:</p>
+				<input type = 'range' id = 'border-width' value = '0.1'
+				 max = '10' min = '0' step = '0.01' >
+				<p>width%</p>
+				<input type = 'range' id = 'width' value = '40' max = '100'
+				 min = '0' step = '1' >
+				<p>hieght%</p>
+				<input type = 'range' id = 'height' value = '40' max = '100'
+				 min = '0' step = '1' >
+				<p>depth</p>
+				<input type = 'number' id = 'depth' value = '1024'>
+				<button id = "breakit">Recurr</button>
+				<button id = 'reset'>Reset</button>
+
+				<div id = 'output-2' class = "js-output">
+					<p>click 'Recurr' to recursively add children to a div and
+						make some glitchy s*** </p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
