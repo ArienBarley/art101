@@ -65,7 +65,7 @@ function zip(...args){
 //functions
 //function create2Buttons(button1){}
 function createButton(){
-        $("#output-1").append("<button class = 'creator-button' > Create More Buttons </button>");
+        $("#output-1").append("<button class = 'creator-button' > Create another Button </button>");
         $('.creator-button').click(createButton);
 };
 
