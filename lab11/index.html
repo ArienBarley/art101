@@ -11,16 +11,12 @@
 <body>
 	<div class = "page">
 		<div id = "content">
+
 			<div id = "wrapper">
 
 				<div class = "blue-content" id = "left">
 					<h3>Lab 11 - Libraries and jQuery</h3>
 					<p><u>Learning to use Libraries and jQuery with JavaScript</u></p>
-					<p></p>
-
-				</div>
-				<div id = "right">
-
 				</div>
 			</div>
 			<div class = "task">
@@ -37,28 +33,30 @@
 
 				<img clas = "screenshot" src = 'img/brokenjs.png'>
 				<button class = 'glitch-demo '>Demo of glitch</button>
-				<p>
-				</p>
+
 				<div class = "js-output" id = "output-0">
 					<p> Create and Click some buttons</p>
 				</div>
+
 				<p>
-					It turned out this was becasue I was using the class selector '.' which added an event listener to every button in the class, duplicating the listeners on the already existing buttons. I did not know that objects could have multiple listeners so this was a puzzle at first, but a good learning experience. I fixed it by generating a unique ID for each button as it was created and then selecting the button to add the listener to by this ID.
+					It turned out this was becasue I was using the class selector '.' which added an event listener to every button in the class, duplicating the listeners on the already existing buttons. I did not know that objects could have multiple listeners so this was a puzzle at first, but a good learning experience. I fixed it by using a global variable to generate a unique ID for each button as it was created and then selecting the button to add the listener to by this ID.
 					It could also have been fixed by getting the whole class and then only adding the event listener to button a button which did not already have a listener, but this way seemed a more efficient and reliable way. I would be curious to learn more about best practices for designing these systems.
 				</p>
 			</div>
 
 			<div class = "task">
 				<h4>Results</h4>
-				<p> <p>
+
 				<button class = 'creator-button' id = 'creator-button-0'>Create a button</button>
-				<p>
-					It works locally and globally
-				</p>
 				<div class = "js-output" id = "output-1">
 					<p>Buttons will apera here :)</p>
 				</div>
+				<p>
+					It works locally and globally
+				</p>
+
 			</div>
+
 		</div>
 	</div>
 </body>
