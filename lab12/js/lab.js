@@ -133,7 +133,7 @@ function readFile(path){
     returnedText = ''
     var req = new XMLHttpRequest();
     req.onload = function() {
-
+        console.log('onload running');
         returnedText = this.responseText;
     };
     req.open('GET', path);
