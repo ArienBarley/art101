@@ -143,7 +143,7 @@ function readFile(path){
 
 //button management
 $('#reveal-house-affiliation').click(function(){
-    readFile('https://arienbarley.github.io/art101/lab12/data.txt');
+    readFile('https://arienbarley.github.io/art101/lab12/js/data.txt');
 });
 
 $('#find-house').click(sortingHatBasic);
