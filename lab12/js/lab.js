@@ -61,7 +61,7 @@ function stringToBin(s){
     var arr = s.split('');
     var x=0;
     for (var i = 0; i<arr.length;i++){
-        x += arr[i]*Math.pow(2,i);
+        x += parseInt(arr[i])*Math.pow(2,i);
     };
     return x;
 };// end string to bin
@@ -71,17 +71,19 @@ function nameToNumber(name){
     number = 1;
     //create a big number based on the name
     for (var i = 0; i<name.length;i++){
-        number *= name[i].charCodeAt(0);
+        number += name[i].charCodeAt(0);
     };
     //hash it by the mid-square method
     //square the number
     number *= number;
     //convert to binary
     binary = number.toString(2);
+    console.log(binary);
     //take the middle two digits (giving a number betwen 0 and 3)
     //find the mid index
     mid = Math.floor(binary.length / 2);
     middle = binary.slice(mid-1,mid+1);
+    console.log(middle);
     //return that as an integer
     return stringToBin(middle);
 };
@@ -127,24 +129,27 @@ function isZeroMod3(){
         $('#output-2').html('<p>'+userNumber+' is not divisible by 3, (remainder: 2</p>');
     };
 };
+//global variable to hold the returned data
+var data = '';
 //read file
 function readFile(path){
     console.log('readfile running: '+path)
-    returnedText = ''
     var req = new XMLHttpRequest();
     req.onload = function() {
         console.log('onload running');
-        returnedText = this.responseText;
+        data = this.responseText
+        console.log(this.responseText)
     };
     req.open('GET', path);
     req.send();
     console.log('readFile got to the bottom')
-    return returnedText;
+    //return returnedText;
 };
 
 //button management
 $('#reveal-house-affiliation').click(function(){
     readFile('https://arienbarley.github.io/art101/lab12/js/data.txt');
+    $('#output-3').html('<pre>'+data+'</pre>')
 });
 
 $('#find-house').click(sortingHatBasic);

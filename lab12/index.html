@@ -47,7 +47,12 @@
 					Learning to get files was more complicated. <br>
 					After a bit of stack overflow research I found that an XML (extensible markup language) request was needed just to read the data from the same directory as the js file. <br>
 					After setting this up I found that Chrome does not allow files to access other files on the computer without restarting it from terminal with --allow-file-access-from-files. I decided to try testing it on the github page.
+					Using the console I found that the function was reading the data off but not returning it because I forgot that the variables created outside of the anonymous function weren't accessible from within it. I solved this by creating a global variable to hold this value. This solution, however, does feel clunky and I would like to know what best practice for managing global variables is in javascript.
 				</p>
+
+				<img class = 'screenshots' src = 'img/console-experiments.png'>
+				<p class="caption"> Here's some of the console experiments</p>
+				<p>I was going to also try to have each input write to the file. It looks like the proper way of doing this is with nodeJS and fetch rather than an XMLHttpRequest, but its gone midnight and this is due at 7am so I'll work that out another time. For now I just put some harry potter data to demo the function</p>
 			</div>
 
 			<div class = "task">
@@ -71,7 +76,7 @@
 				</div>
 
 				<p>See other people's houses</p>
-				<button class = 'btn' id = 'reveal-house-affiliation'>See house asignments</button>
+				<button class = 'btn' id = 'reveal-house-affiliation'>see some harry potter data</button>
 
 				<div id = 'output-3' class = "js-output">
 					<p>
