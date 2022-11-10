@@ -138,6 +138,7 @@ function readFile(path){
     };
     req.open('GET', path);
     req.send();
+    console.log('readFile got to the bottom')
     return returnedText;
 };
 
