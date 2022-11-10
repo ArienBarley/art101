@@ -53,6 +53,11 @@
 				<img class = 'screenshots' src = 'img/console-experiments.png'>
 				<p class="caption"> Here's some of the console experiments</p>
 				<p>I was going to also try to have each input write to the file. It looks like the proper way of doing this is with nodeJS and fetch rather than an XMLHttpRequest, but its gone midnight and this is due at 7am so I'll work that out another time. For now I just put some harry potter data to demo the function</p>
+				<p>
+					I also noticed that the button doesnt  display the data the first time it's pressed. I think this is because this line: <br> $('#output-3').html('pre'+data+'/pre') <br>
+					runs before the data is returned and the 'onload' function is run when the request comes back.
+				</p>
+
 			</div>
 
 			<div class = "task">

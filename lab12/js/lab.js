@@ -1,6 +1,6 @@
 /*
 Author: Arien Barley
-Created: 2nd November
+Created: 7nd November
 License: Public Domain
 */
 
@@ -86,7 +86,21 @@ function nameToNumber(name){
     console.log(middle);
     //return that as an integer
     return stringToBin(middle);
-};
+}; // end name hasher
+
+
+function sortingHatRefactorHash(){
+    //set outpus
+    outputs = ['Gryffindor','Slytherin','Hufflepuff',
+            "Ravenclaw"];
+    //get userName
+    userName = $('#user-name').val();
+
+    //convert it through a hashing function into a
+    //number between 0 and 3
+    output = outputs[nameToNumber(userName)];
+    $('#output-1').html(output);
+};//end hash sortig hat
 
 function sortingHatBasic(){
     //get user input
@@ -103,52 +117,47 @@ function sortingHatBasic(){
     }else{
         $('#output-1').html("Ravenclaw");
     };
-};
-
-function sortingHatRefactorHash(){
-    //set outpus
-    outputs = ['Gryffindor','Slytherin','Hufflepuff',
-            "Ravenclaw"];
-    //get userName
-    userName = $('#user-name').val();
-
-    //convert it through a hashing function into a
-    //number between 0 and 3
-    output = outputs[nameToNumber(userName)];
-    $('#output-1').html(output);
-};
+};//end sorting hat basic
 
 function isZeroMod3(){
     userNumber = $('#usernumber').val();
 
     if (userNumber % 3 == 0 ){
-        $('#output-2').html('<p>'+userNumber+' is divisible by 3, remainder: 0</p>');
+        $('#output-2').html('<p>'+userNumber+
+                            ' is divisible by 3, remainder: 0</p>');
     }else if(userNumber % 3 == 1){
-        $('#output-2').html('<p>'+userNumber+' is not divisible by 3, (remainder: 1</p>');
+        $('#output-2').html('<p>'+userNumber+
+                            ' is not divisible by 3, (remainder: 1</p>');
     }else{
-        $('#output-2').html('<p>'+userNumber+' is not divisible by 3, (remainder: 2</p>');
+        $('#output-2').html('<p>'+userNumber+
+                            ' is not divisible by 3, (remainder: 2</p>');
     };
-};
+};//end isZeroMod3
+
+//file reading
 //global variable to hold the returned data
-var data = '';
+var data = 'Probably Loaded, try pressing the button again';
+
 //read file
 function readFile(path){
-    console.log('readfile running: '+path)
+
     var req = new XMLHttpRequest();
     req.onload = function() {
-        console.log('onload running');
+        //assign function to be run when the requests
+        //comes back which writes the response to the
+        // global variable: data
         data = this.responseText
-        console.log(this.responseText)
     };
+    //run the request
     req.open('GET', path);
     req.send();
-    console.log('readFile got to the bottom')
-    //return returnedText;
 };
 
 //button management
 $('#reveal-house-affiliation').click(function(){
+    //read data file
     readFile('https://arienbarley.github.io/art101/lab12/js/data.txt');
+    //write data to output div
     $('#output-3').html('<pre>'+data+'</pre>')
 });
 
