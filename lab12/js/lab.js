@@ -133,6 +133,7 @@ function readFile(path){
     returnedText = ''
     var req = new XMLHttpRequest();
     req.onload = function() {
+
         returnedText = this.responseText;
     };
     req.open('GET', path);
@@ -142,7 +143,7 @@ function readFile(path){
 
 //button management
 $('#reveal-house-affiliation').click(function(){
-    readFile('../data.txt');
+    readFile('https://arienbarley.github.io/art101/lab12/data.txt');
 });
 
 $('#find-house').click(sortingHatBasic);
