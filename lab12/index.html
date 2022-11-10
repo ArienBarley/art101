@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 12 - Conditionals</title>
+	<link rel="stylesheet" type="text/css" href="css/lab.css">
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/lab.js" defer></script>
+</head>
+<body>
+	<div class = "page">
+		<div id = "content">
+			<div id = "wrapper">
+
+				<div class = "blue-content" id = "left">
+					<h3>Lab 12 - Conditionals</h3>
+					<p><u>Creating functions that use conditionals</u></p>
+					<p>if... else if ... else</p>
+				</div>
+				<div id = "right">
+
+				</div>
+			</div>
+			<div class = "task">
+				<h4>Challenge</h4>
+				<p>
+					Create functions that use conditional statements. Specifically make a hash function based on the name to make the sorting more mysterious but still reliable based on the input. I also decided to include a few other experiments in this lab.
+					I have finally experimented more with css and made some animations with css, to make the buttons a bit overwhelming.
+					I also wanted to learn to read and write files, so decided to store peoples name and house in a text file to learn to do this.
+				</p>
+			</div>
+			<div class = "task">
+				<h4>Problems</h4>
+				<p>
+					I decided to try to add some animations to the buttons to get a sense of how css animations work.<br>
+					At first they weren't working, I tested if the hover event was being triggered with:<br>
+					<pre>
+						function test(){
+						    console.log('hover triggered')
+						}
+						$('button').hover(test);
+					</pre>
+					Next I tested it on a div, which worked. I think Maybe the problem is that buttons already have a hover animation by default.
+				</p>
+				<p>
+					Learning to get files was more complicated. <br>
+					After a bit of stack overflow research I found that an XML (extensible markup language) request was needed just to read the data from the same directory as the js file. <br>
+					After setting this up I found that Chrome does not allow files to access other files on the computer without restarting it from terminal with --allow-file-access-from-files.
+				</p>
+			</div>
+
+			<div class = "task">
+				<h4>Results</h4>
+
+				<p>Input your name:<p>
+				<input id = 'user-name' type = 'text' value='John Smith'>
+				<button class = 'btn' id = 'find-house'>find out what your house is the basic way</button>
+				<button class = 'btn' id = 'find-house-hash'>find out what your house is the unnecesarily complicated way</button>
+				<div id = 'output-1' class = "js-output">
+					<p>
+					</p>
+				</div>
+
+				<p>Gimme a number</p>
+				<input id = 'usernumber' type = 'number' value=123>
+				<button class = 'btn' id = 'div-3'>is ur number divisible by 3</button>
+				<div id = 'output-2' class = "js-output">
+					<p>
+					</p>
+				</div>
+
+				<p>See other people's houses</p>
+				<button class = 'btn' id = 'reveal-house-affiliation'>See house asignments</button>
+
+				<div id = 'output-3' class = "js-output">
+					<p>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
