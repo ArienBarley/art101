@@ -61,3 +61,16 @@ function zip(...args){
 };//end zip
 
 //end utilities
+url = 'https://github.com/ArienBarley/art101/tree/master/LearningNodeJS/js/data.txt';
+fetch(url)
+    .then((response)=> {
+        //handle response
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+    })
+    .catch(function(){
+        //handle error
+        console.log('something went wrong');
+    })
