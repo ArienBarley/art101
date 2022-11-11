@@ -56,11 +56,19 @@ function zip(...args){
         return result;
     });
 
-    console.log(zipped)
+    console.log(zipped);
     return zipped;
 };//end zip
 
 //end utilities
+
+
+$("#get-data").click(function(){
+    $.getJSON( "data.json", function( data ) {
+        console.log(data);
+    });
+});
+/* probaby not
 url = 'https://github.com/ArienBarley/art101/tree/master/LearningNodeJS/js/data.txt';
 fetch(url)
     .then((response)=> {
@@ -74,3 +82,5 @@ fetch(url)
         //handle error
         console.log('something went wrong');
     })
+
+    */
