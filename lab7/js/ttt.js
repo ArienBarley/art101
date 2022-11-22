@@ -78,6 +78,7 @@ var osAndXs = {
         osAndXs.board = [[-1,-1,-1],
                 [-1,-1,-1],
                 [-1,-1,-1],];
+
         osAndXs.turn = 0;
         osAndXs.update_gameboard(osAndXs.print_board());
     },

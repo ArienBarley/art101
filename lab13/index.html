@@ -33,7 +33,7 @@
 			<div class = "task">
 				<h4>Problems</h4>
 				<p>
-
+					Having used loops a lot in the past labs and in python I didn't run into many problems with this lab (other than forgetting to submit it until now). One problem I did run into was the loop not terminating if the limit was 6 or greater, this was confusing. By writing i to the console I found that i, the variable name I was using to control the outer for loop to check each numbers factors <b> and </b> to control the loop that checked if a number was prime was re-setting to 5 each time it reached 7. I realised this was because I declared the for loop as: for ( i = 1; i<=n; i++) rather than for (var i = 1; i<=n; i++) which caused i to be a global variable and the i that was stepping through the numbers up to the user defined limit was being overwritten by the i from isPrime.
 				</p>
 			</div>
 
@@ -61,18 +61,15 @@
 					</tr>
 				</table>
 				<p>Limit:</p>
-				<input id = 'limit' type = 'number' value = 100>
+				<input id = 'limit' type = 'number' value = 200>
 				<button id = 'run-fizbuz-loop' >Run</button>
+
 				<div id = 'output-1' class = "js-output">
 					<p>
 					</p>
 				</div>
 
 			</div>
-			<div class = "task">
-
-
-		</div>
 	</div>
 </body>
 </html>

@@ -6,11 +6,6 @@ License: Public Domain
 
 // functions
 //utilities
-function writeToDiv(text, id){
-    //writes the passed text to the specified div
-    document.getElementById(id).innerHTML = text;
-};//end writeToDiv
-
 function arrToString(arr){
     //returns the array in a better format for
     //writing in html
@@ -65,7 +60,8 @@ function zip(...args){
 function isPrime(n){
     console.log('ispirme running')
     //step through possible factors
-    for (i = 2; i<Math.ceil(Math.sqrt(n))+1; i++){
+    for (var i = 2; i<Math.ceil(Math.sqrt(n))+1; i++){
+        console.log('isPrime i =', i);
         if (n % i == 0) {
             //if a factor is found return false
             return false;
@@ -85,27 +81,31 @@ function wordFactorLoop(n=100){
     factors = [ $('#factor1').val(),
                 $('#factor2').val(),
                 $('#factor3').val(),
-                $('#factor3').val(),];
-
+                $('#factor4').val(),];
+    //words to replace numbers for which factors[j] is a factor
     words = [   $('#word1').val(),
                 $('#word2').val(),
                 $('#word3').val(),
                 $('#word4').val(),];
+    //'text' holds the string to be written to to the output div
+    //when the program is complete
     text = '';
-    for (i = 1; i<=n; i++){
-        console.log(i);
+    //loop through integers up to given limit (n)
+    for (var i = 1; i<=n; i++){
+        console.log('i=',i);
         factorInFactors = false;
         //loop through factors
         for(j = 0; j<factors.length; j++){
             //check if factor
-
             if (i % factors[j] == 0){
-                //append word to text being generated
                 factorInFactors = true;
+                //append word to text being generated
+
                 text += words[j];
             }//end if
         };//end innner for
 
+        //make it bold if it's prime
         if(!factorInFactors){
             if (isPrime(i)){
                 text+= '<b>'+i+'</b>';
@@ -113,13 +113,15 @@ function wordFactorLoop(n=100){
                 text += i;
             };
         };
-        text+='<br>'
+
+        text+='<br>';
     };//end outer for
 
     return text;
 };//end wordfactor loop
 
 
+//button management
 $('#run-fizbuz-loop').click(function(){
     lim = $('#limit').val();
     text = wordFactorLoop(n = lim);

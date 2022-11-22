@@ -68,6 +68,14 @@ $("#get-data").click(function(){
         console.log(data);
     });
 });
+
+var spell = {
+    ws: false;
+    
+};
+
+
+console.log(ws)
 /* probaby not
 url = 'https://github.com/ArienBarley/art101/tree/master/LearningNodeJS/js/data.txt';
 fetch(url)
