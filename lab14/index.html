@@ -8,7 +8,8 @@
 	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
 	crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload ='write_random_dest()' >
+
 	<div class = "page">
 		<div id = "content">
 			<div id = "wrapper">
@@ -29,17 +30,18 @@
 			  	I couldnt find any actual errors in previous labs, but
 				I wanted to learn about classes in JavaScript, so I decided to
 				remake lab 6 as a class, as it seems to lend itself to that.
-				
+
 			  </p>
         	</div>
 			<div class = "task">
 
         	  <h4>Results</h4>
-		  	  <p class = 'note'>
-			  	<button id = 'make-hitch'> make it</button>
+			  <p>Destination:</p>
+			  <input id = 'dest' type = 'text'>
 
-
-			  </p>
+			  <button id = 'make-hitch'> Instanciate</button>
+			  <br>
+			  <br>
 			  <div id = 'output-1' class = "js-output">
 				  <p>
 				  </p>

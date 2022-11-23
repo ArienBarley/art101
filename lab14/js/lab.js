@@ -45,7 +45,7 @@ function dateDiff(startingDate, endingDate) {
     //add the days in the start month
     //(to get the number of days into the next month )
     dayDiff += daysInMonth[startDate.getMonth()];
-}//otherwise we dont need to change the date
+  }//otherwise we dont need to change the date
 
   return [yearDiff,monthDiff, dayDiff];
 }
@@ -70,17 +70,11 @@ myTransport = ["Hitch-hike","UCSC Loop Bus","SkateBoard","Airplane",
               "Santa Cruz Metro Bus","Bus 17","Train","TFL (i miss u)"]
 
 class HitchHike {
-    constructor(){
+    constructor(destination){
         this.type = "Hitch-hike";
         this.make = "Cardboard Sign";
         this.colour = "Brown";
-        this.sign_text_options= ["SAFEWAY", "MONTEREY", "LOS ANGELES", "MENDOCINO",
-                                  "FAIRFAX", "BIG SUR", "EAST COAST?", "SEATTLE",
-                                  "VANCOVER ISLAND", "CRECENT CITY", "PORTLAND", "LONDON",
-                                  "SWINDON", "STROUD", "CIRENCESTER", "BRISTOL", "DEN HAAG",
-                                  "SOUTH", "FREIBURG", "BERLIN", "NORTH",
-                                  "ANYWHERE BUT HERE"],
-        this.destination = random_from(this.sign_text_options);
+        this.destination = destination;
         this.mediums = ['Sharpy','Charcoal','Tape',]
         this.medium = random_from(this.mediums);
         this.birthday = new Date(random_from(range(2022,2016)),//year
@@ -114,16 +108,27 @@ class HitchHike {
 
         s += "<br>Age: " + ageString;
         return s;
-    }//end write self
+    }//getstring
 
     write_self(){
         $('#output-1').html(this.getString());
     }
 };
 
+const sign_text_options = ["SAFEWAY", "MONTEREY", "LOS ANGELES", "MENDOCINO",
+                          "FAIRFAX", "BIG SUR", "EAST COAST?", "SEATTLE",
+                          "VANCOVER ISLAND", "CRECENT CITY", "PORTLAND", "LONDON",
+                          "SWINDON", "STROUD", "CIRENCESTER", "BRISTOL", "DEN HAAG",
+                          "SOUTH", "FREIBURG", "BERLIN", "NORTH",
+                          "ANYWHERE BUT HERE"];
+
+function write_random_dest(){
+    console.log(sign_text_options)
+    $('#dest').attr('value', random_from(sign_text_options));
+};
 //output
 $('#make-hitch').click(function(){
-    hitch = new HitchHike();
+    hitch = new HitchHike($('#dest').val());
     console.log(hitch);
     hitch.write_self();
 })
