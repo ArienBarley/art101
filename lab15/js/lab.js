@@ -74,33 +74,102 @@ function readFile(path){
     req.send();
 };
 
-function getData(apiURL, sentData, type = 'GET', dataType = 'json'){
+function openWeatherURL(lat, lon){
+    api_key = "6e28dbbec41e904de1f951e2d12e52e4";
+    if (!(lat || lon)){
+        //random lattitude
+        lat = Math.random()*180 -90;
+        //random longitude
+        lon = Math.random()*360 -180;
+    }
+
+    return "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+api_key;
+};
+
+function getData(apiURL, sentData = {}, callback = function() {console.log('no function passed')}, type = 'GET', dataType = 'json', ){
     $.ajax({
         url: apiURL,
         data: sentData,
         type: type,
-        dataType: dataType,
+        //dataType: dataType,
         success: function(data){
-            console.log(data);
+            console.log('succesful ajax request')
+            callback(data);
+
         },
         error: function(data){
-            console.log('error');
-            console.log(data);
+            console.log('error in ajax request');
+            callback( 'Probably a CORs policy error, install an allow-crossorigin requests plugin or similar to get this to work');
         },
+
     });
 };
+
+function processOpenWeatherData(data){
+    // writes some information from the passed json from the open weather
+    // api into html to be written to the output div
+
+    var text = "<b>"+(data.name==""?"This place is nameless</b>":data.name+"</b> ("+data.sys.country+")")+"<br>";
+    //placename and country
+    text+=  "<u>"+data.coord.lat+ "&degN, "+data.coord.lon+"&degW</u><br>";
+
+    //weather description
+    text +=data.weather[0].description +"<br>"
+
+    //cloudiness
+    text += "Cloudiness: " + data.clouds.all+"% <br>";
+
+    //wind speed
+    text += "Wind Speed: "+data.wind.speed+" meters per second<br>";
+    
+    console.log(text);
+    return text;
+}
+
 $('#this-that').click( function(){
-    getData('https://itsthisforthat.com/api.php?text',{"this":"API","that":"Sorority Chicks"});
+    d = getData('https://itsthisforthat.com/api.php?text',
+                {"this":"API","that":"Sorority Chicks"},
+                callback = function(data){
+                    $("#output-1").html("<p>" + data + "</p>");
+                });
 });
 
-$('#this-that-fetch').click( function(){
-    fetchData('https://itsthisforthat.com/api.php?text',{"this":"API","that":"Sorority Chicks"});
+
+$('#contact-openweather-random').click( function(){
+    url = openWeatherURL();
+    console.log(url)
+    getData(url,
+            sentData = {},
+            callback = function(data){
+                var text = processOpenWeatherData(data);
+                $("#output-2").html(text);
+                console.log('runin');
+            },
+        );
 });
 
-async function fetchData(apiURL, sentData, type = 'GET', dataType = 'json'){
-    let response = await fetch(apiURL);
-    let data = await response.json();
-    console.log(data);
-};
+$('#contact-openweather-coords').click( function(){
+    //get inputs
+    var lat = $("#lat").val();
+    var lon = $("#lon").val();
+    //validate coordinates
+    if ((-90<=lat&&lat<=90)&&(-180<=lon&&lon<=180)){
+        var url = openWeatherURL(lat,lon);
+        console.log("URL:",url);
+        getData(url,
+                sentData = {},
+                callback = function(data){
+                    text = processOpenWeatherData(data);
+                    $("#output-2").html(text);
+                },
+            );
+    }else{
+        //if the coordinates are invalid
+        $("#output-2").html("Invalid coordinates");
+    }//end else
+
+});
+
+
 
 //end utilities
