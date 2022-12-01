@@ -121,7 +121,7 @@ function processOpenWeatherData(data){
 
     //wind speed
     text += "Wind Speed: "+data.wind.speed+" meters per second<br>";
-    
+
     console.log(text);
     return text;
 }

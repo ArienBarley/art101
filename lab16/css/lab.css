@@ -1,0 +1,12 @@
+@import "../../css/site.css";
+
+body {
+    font-family: 'Helvetica';
+}
+.js-output{
+    text-align: center;
+}
+.js-output img {
+    max-width:100%;
+    max-height:100%;
+}

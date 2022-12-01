@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 16 - JSON and APIs</title>
+	<link rel="stylesheet" type="text/css" href="css/lab.css">
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/lab.js" defer></script>
+</head>
+<body onload = "onLoad()">
+	<div class = "page">
+		<div id = "content">
+			<div id = "wrapper">
+
+				<div class = "blue-content" id = "left">
+					<h3>Lab 16 - JSON and APIs</h3>
+					<p><u>Processng JSONN data from APIs</u></p>
+					<p>Access the XKCD API</p>
+
+				</div>
+				<div id = "right">
+
+				</div>
+			</div>
+			<div class = "task">
+				<h4>Challenge</h4>
+				<p>
+					Access an api using a github page.
+				</p>
+			</div>
+			<div class = "task">
+				<h4>Problems</h4>
+				<p>
+					CORs.
+				</p>
+			</div>
+
+			<div class = "task">
+				<h4>Results</h4>
+				<p> Would you like a specific comic?</p>
+				<p>
+					Comic Number: <input id = "comic-no" type = 'number' value= 1>
+					<button id = 'get-comic-n'> Get this comic</button>
+				</p>
+
+				<p> Or a random one?</p>
+				<button id = 'random-comic'>Get Random Comic</button><br>
+
+				<div id = 'output-1' class = "js-output">
+				</div><br>
+				<button id = 'prev-comic'>Previous</button>
+				<button id = 'next-comic'>Next</button>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
